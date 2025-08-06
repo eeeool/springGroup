@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	// request.setCharacterEncoding("utf-8");
+
+	String name = request.getParameter("name");
+	int age = Integer.parseInt(request.getParameter("age"));
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,16 +12,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <title>test04.jsp</title>
+  <title>t05Ok.jsp</title>
 </head>
 <body>
 <p><br/></p>
 <div class="container">
-  <h2>URL을 통한 값의 전송(GET 방식)</h2>
-	<div>
-		<a href="test04Ok.jsp?name=hongkildong&age=25" class='btn btn-success'>값전송(jsp)</a>
-		<a href="<%=request.getContextPath() %>/test04Ok?name=hongkildong&age=25" class='btn btn-primary'>값전송(servlet)</a>
-	</div>
+  <h2>전송된 값(t05Ok.jsp)</h2>
+  <hr />
+  <div class='mb-3'>성명: <%=name%></div>
+  <div class='mb-3'>나이: <%=age %></div>
+  <div><input type='button' value='돌아가기' onclick='location.href="<%=request.getContextPath()%>/study/0806/t05.jsp"' /></div>
 </div>
 <p><br/></p>
 </body>
