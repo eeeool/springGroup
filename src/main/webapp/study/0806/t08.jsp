@@ -30,6 +30,7 @@
   	  <input type="checkbox" name="hobby" value="수영" class="me-1" />수영 &nbsp;
   	  <input type="checkbox" name="hobby" value="배드민턴" class="me-1" />배드민턴 &nbsp;
   	  <input type="checkbox" name="hobby" value="바이크" class="me-1" />바이크
+  	  <input type="checkbox" name="hobby" value="기타" class="me-1" checked />기타
   	</div>
   	<div class="mb-3">직업
   	  <select name="job" class="form-control">
