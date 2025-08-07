@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-	// request.setCharacterEncoding("utf-8");
-
-	String name = request.getParameter("name");
-	int age = Integer.parseInt(request.getParameter("age"));
-%>
+<%--
+	콤보상자와 리스트박스에 그림을 추가시켜준 후, 그림을 선택하면 하단에 선택된 그림을 표시하시오.
+	단, 리스트박스의 그림은 여러장을 선택하여 출력시켜줄 수 있도록 처리한다.
+--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,16 +10,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <title>t04Ok.jsp</title>
+  <title>ex01_image.jsp</title>
 </head>
 <body>
 <p><br/></p>
 <div class="container">
-  <h2>전송된 값</h2>
-  <hr />
-  <div class='mb-3'>성명: <%=name%></div>
-  <div class='mb-3'>나이: <%=age%></div>
-  <div><input type='button' value='돌아가기' onclick='location.href="t04.jsp"' /></div>
+  
 </div>
 <p><br/></p>
 </body>

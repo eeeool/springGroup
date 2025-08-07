@@ -14,11 +14,10 @@
   
   <script>
   	'use strict';
-  	
-  	if ('<%=msgFlag%>' == 'ok') alert("<%=mid%>님 방문을 환영합니다.");
-  	else {
+ 
+  	if ('<%=mid%>' == '') {
   		alert('로그인 후 사용해 주세요');
-  		location.href = '<%=request.getContextPath()%>/study/0806/t07.jsp';
+  		location.href = '<%=request.getContextPath()%>/study/0806/t10_login.jsp';
   	}
   	
   	function logoutCheck() {
@@ -26,10 +25,7 @@
   		
   		if (ans) {
   			alert('<%=mid%>님 로그아웃 되었습니다.')
-  			location.href = 't07.jsp'
-  		} 
-  		else{
-  			
+  			location.href = '<%=request.getContextPath()%>/study/0806/t10_login.jsp';
   		}
   	}
   </script>
