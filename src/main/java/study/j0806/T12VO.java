@@ -9,6 +9,7 @@ public class T12VO {
 	private String mountain;
 	private String content;
 	private String fileName;
+	private String address;
 	
 	public String getName() {
 		return name;
@@ -74,9 +75,19 @@ public class T12VO {
 		this.fileName = fileName;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	@Override
 	public String toString() {
 		return "T12VO [name=" + name + ", age=" + age + ", gender=" + gender + ", hobby=" + hobby + ", job=" + job
-				+ ", mountain=" + mountain + ", content=" + content + ", fileName=" + fileName + "]";
+				+ ", mountain=" + mountain + ", content=" + content + ", fileName=" + fileName + ", address=" + address
+				+ "]";
 	}
+
 }
