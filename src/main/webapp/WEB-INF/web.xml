@@ -50,20 +50,20 @@
   
   <!-- 특정 서블릿에 초기값 할당하기 -->
   <servlet>
-  	<servlet-name>springGroup</servlet-name>
-  	<servlet-class>study2.init.OfficeInit</servlet-class>
-	 	<context-param>
+    <servlet-name>springGroup</servlet-name>
+    <servlet-class>study2.init.OfficeInit</servlet-class>
+    <init-param>
 	    <param-name>className</param-name>
 	    <param-value>인사과</param-value>
-	  </context-param>
-	 	<context-param>
+	  </init-param>
+    <init-param>
 	    <param-name>mid</param-name>
 	    <param-value>admin</param-value>
-	  </context-param>
+	  </init-param>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>springGroup</servlet-name>
-  	<url-pattern>/springGroup</url-pattern>
+    <servlet-name>springGroup</servlet-name>
+    <url-pattern>/springGroup</url-pattern>
   </servlet-mapping>
    
   <!-- Filter 처리(controller앞단에서 처리(제어)한다. -->
