@@ -30,11 +30,11 @@
           <div class="mb-2">
 	          <input type="submit" value="로그인" class="btn btn-success me-2"/>
 	          <input type="reset" value="다시입력" class="btn btn-warning me-2"/>
-	          <input type="button" value="회원가입" onclick="alert('준비중입니다.');"/>
+	          <input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='${ctp}/study2/login/LoginJoin'"/>
           </div>
 	    		<div style="font-size:0.8em">
 	    			<input type="checkbox" name="idSave" checked /> 아이디 저장 /
-	    			<a href="#" class="text-decoration-none text-dark link-primary badge bg-danger">아이디찾기</a> /
+	    			<a href="#" class="text-decoration-none text-dark link-primary">아이디찾기</a> /
 	    			<a href="#" class="text-decoration-none text-dark link-primary">비밀번호찾기</a>
 	    		</div>
         </td>

@@ -59,14 +59,14 @@ public class LoginDAO {
 	}
 
 	// 아이디 검색
-	public LoginVO getLoginIdCheck(String mid, String pwd) {
+	public LoginVO getLoginIdCheck(String mid) {
 		vo = new LoginVO();
 		
 		try {
 			sql = "select * from friend where mid=? and pwd=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
-			pstmt.setString(2, pwd);
+//			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {

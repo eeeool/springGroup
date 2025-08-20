@@ -22,38 +22,38 @@ public class LoginOk extends HttpServlet {
 
 		LoginDAO dao = new LoginDAO();
 		
-		LoginVO vo = dao.getLoginIdCheck(mid, pwd);
+//		LoginVO vo = dao.getLoginIdCheck(mid, pwd);
 //		System.out.println("vo: " + vo);
 		
 		PrintWriter out = response.getWriter();
 		
-		if (vo.getMid() != null) {
-			// 정상적으로 인증이 확인되었다면 아이디를 쿠키에 저장할시 판별한다.
-			Cookie cookieMid = new Cookie("cMid", mid);
-			cookieMid.setPath("/");
-			if (idSave.equals("on")) cookieMid.setMaxAge(60*60*24*7);
-			else cookieMid.setMaxAge(0);
-			response.addCookie(cookieMid);
-			
-			// 로그인중에 항상 기억하고자 하는 값이 있다면 세션에 저장처리한다. (아이디,닉네임)
-			HttpSession session = request.getSession();
-			session.setAttribute("sMid", mid);
-			session.setAttribute("sNickName", vo.getNickName());
-				
-//			String viewPage = "/WEB-INF/study2/login/loginMain.jsp";
-//			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-//			dispatcher.forward(request, response);
-			
-			out.println("<script>");
-			out.println("alert('"+mid+"님 로그인 되셨습니다.');");
-			out.println("location.href='"+request.getContextPath()+"/study2/exam/LoginMain';");
-			out.println("</script>");
-		}
-		else {
-			out.println("<script>");
-			out.println("alert('로그인 실패');");
-			out.println("location.href='"+request.getContextPath()+"/study2/exam/Login';");
-			out.println("</script>");
-		}
+//		if (vo.getMid() != null) {
+//			// 정상적으로 인증이 확인되었다면 아이디를 쿠키에 저장할시 판별한다.
+//			Cookie cookieMid = new Cookie("cMid", mid);
+//			cookieMid.setPath("/");
+//			if (idSave.equals("on")) cookieMid.setMaxAge(60*60*24*7);
+//			else cookieMid.setMaxAge(0);
+//			response.addCookie(cookieMid);
+//			
+//			// 로그인중에 항상 기억하고자 하는 값이 있다면 세션에 저장처리한다. (아이디,닉네임)
+//			HttpSession session = request.getSession();
+//			session.setAttribute("sMid", mid);
+////			session.setAttribute("sNickName", vo.getNickName());
+//				
+////			String viewPage = "/WEB-INF/study2/login/loginMain.jsp";
+////			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+////			dispatcher.forward(request, response);
+//			
+//			out.println("<script>");
+//			out.println("alert('"+mid+"님 로그인 되셨습니다.');");
+//			out.println("location.href='"+request.getContextPath()+"/study2/exam/LoginMain';");
+//			out.println("</script>");
+//		}
+//		else {
+//			out.println("<script>");
+//			out.println("alert('로그인 실패');");
+//			out.println("location.href='"+request.getContextPath()+"/study2/exam/Login';");
+//			out.println("</script>");
+//		}
 	}
 }
