@@ -164,5 +164,28 @@ public class LoginDAO {
 		}
 		return vos;
 	}
+
+	// 회원정보 수정
+	public int setLoginUpdate(LoginVO vo) {
+		int res = 0;
+		
+		try {
+			sql = "update friend set name=?, age=?, gender=?, address=? where mid=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setInt(2, vo.getAge());
+			pstmt.setString(3, vo.getGender());
+			pstmt.setString(4, vo.getAddress());
+			pstmt.setString(5, vo.getMid());
+			
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL오류(setLoginUpdate)~~" + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		
+		return res;
+	}
 	
 }
