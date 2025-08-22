@@ -13,7 +13,7 @@
   	
   	if ('${message}' !== '') alert('${message}');
   	<%-- location.href = '<%=request.getContextPath()%>/study/0806/t10_member.jsp?mid=<%=mid%>'; --%>
-  	localtion.href = '${url}'
+  	location.href = '${url}'
   </script>
 </head>
 <body>

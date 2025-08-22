@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.CommonInterface;
 
+@SuppressWarnings("serial")
 @WebServlet("*.gu")
 public class GuestController extends HttpServlet {
 
@@ -38,7 +39,7 @@ public class GuestController extends HttpServlet {
 		else if (com.equals("Admin")) {
 			viewPage += "admin";
 		}
-		else if (com.equals("AdminOk")) {
+		else if (com.equals("AdminOK")) {
 			command = new AdminOkCommand();
 			command.execute(request, response);
 			viewPage = "/include/message";

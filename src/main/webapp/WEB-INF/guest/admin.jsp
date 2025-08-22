@@ -14,14 +14,14 @@
 <jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <form name="myform" method="post" action="${ctp}/study2/login/adminOk.gu">
+  <form name="myform" method="post" action="AdminOK.gu">
   	<table class="table table-bordered text-center">
       <tr>
         <td colspan="2" class="bg-secondary-subtle"><font size="5">관리자 인증창</font></td>
       </tr>
       <tr>
         <th class="align-middle">관리자 아이디</th>
-        <td><input type="text" name="mid" value="admin" autofocus required class="form-control"/></td>
+        <td><input type="text" name="mid" value="test" autofocus required class="form-control"/></td>
       </tr>
       <tr>
          <th class="align-middle">비밀번호</th>
