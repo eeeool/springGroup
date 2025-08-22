@@ -7,16 +7,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <jsp:include page="/include/bs5.jsp" />
-  <title>guest.jsp</title>
+  <title>extension5.jsp</title>
 </head>
 <body>
 <jsp:include page="/include/header.jsp" />
 <jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <h2>이곳은 guest.jsp 입니다.</h2>
+  <h2>확장자 패턴 연습5</h2>
   <hr/>
-  <div><a href="extension2.test" class="btn btn-success">돌아가기</a></div>
+  <div>
+    <a href="_____________________/Home5.test5" class="btn btn-success me-3">Home5</a>
+    <a href="aaaaaaaaaaaaaaaaaaaaa/Guest5.test5" class="btn btn-primary me-3">Guest5</a>
+    <a href="${ctp}/study2/mapping/Board5.test5" class="btn btn-secondary me-3">Board5</a>
+    <a href="${ctp}/study2/mapping/Pds5.test5" class="btn btn-warning me-3">PDS5</a>
+  </div>
+  <hr/>
+  <div id="msg">${msg}</div>
 </div>
 <p><br/></p>
 <jsp:include page="/include/footer.jsp" />

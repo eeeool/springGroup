@@ -7,16 +7,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <jsp:include page="/include/bs5.jsp" />
-  <title>guest.jsp</title>
+  <title>pds3.jsp</title>
 </head>
 <body>
 <jsp:include page="/include/header.jsp" />
 <jsp:include page="/include/nav.jsp" />
 <p><br/></p>
 <div class="container">
-  <h2>이곳은 guest.jsp 입니다.</h2>
+  <h2>${msg}</h2>
   <hr/>
-  <div><a href="extension2.test" class="btn btn-success">돌아가기</a></div>
+  <div><a href="extension3.test3" class="btn btn-success">돌아가기</a></div>
 </div>
 <p><br/></p>
 <jsp:include page="/include/footer.jsp" />

@@ -8,7 +8,7 @@
         <a class="nav-link active" href="http://192.168.50.59:9090/springGroup">HOME</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Guest</a>
+        <a class="nav-link" href="GuestList.gu">Guest</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Board</a>
@@ -24,8 +24,15 @@
 				    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Directory">디렉토리매핑연습</a></li>
 				    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Extension.do">확장자매핑연습1</a></li>
 				    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Extension2.test">확장자매핑연습2</a></li>
+				    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Extension3.test3">확장자매핑연습3</a></li>
+				    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Extension4.test4">확장자매핑연습4</a></li>
+				    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Extension5.test5">확장자매핑연습5</a></li>
 				  </ul>
 				</div>
+      </li>
+       <li class="nav-item">
+        <c:if test="${!empty sMid}"><a class="nav-link" href="${ctp}/study2/login/Logout">LogOut</a></c:if>
+        <c:if test="${empty sMid}"><a class="nav-link" href="${ctp}/study2/login/Login">LogIn</a></c:if>
       </li>
     </ul>
   </div>
