@@ -54,6 +54,11 @@ public class GuestController extends HttpServlet {
 			command.execute(request, response);
 			return;
 		}
+		else if (com.equals("GuestUpdate")) {
+			command = new GuestUpdateCommand();
+			command.execute(request, response);
+			return;
+		}
 		viewPage += ".jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

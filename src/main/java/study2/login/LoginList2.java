@@ -17,30 +17,30 @@ import org.json.simple.JSONObject;
 @SuppressWarnings({ "unchecked", "serial" })
 @WebServlet("/study2/login/LoginList2")
 public class LoginList2 extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		LoginDAO dao = new LoginDAO();
 		List<LoginVO> vos = dao.getLoginList();
-		
-		Map<String, String> map = new HashMap<String, String>();
+
+		Map<String, String> map = new HashMap<>();
 			map.put("mid", "snm1234");
 			map.put("nickName", "소장군");
 			map.put("name", "소나무");
 			map.put("age", "66");
 			map.put("gender", "여자");
 			map.put("address", "평양");
-			
+
 			// map 형식의 자료를 JSON 형식으로 변환
 			JSONObject jObj = new JSONObject(map);
-			
+
 			// JSON 형식의 자료를 JSON 배열에 담아준다.
 			JSONArray jArray = new JSONArray();
-			
+
 			jArray.add(jObj);
-			
-			map = new HashMap<String, String>();
+
+			map = new HashMap<>();
 			map.put("mid", "snm1234");
 			map.put("nickName", "이장군");
 			map.put("name", "이기자");
@@ -50,9 +50,9 @@ public class LoginList2 extends HttpServlet {
 
 			jObj = new JSONObject(map);
 			jArray.add(jObj);
-			
+
 			System.out.println("jArray: " + jArray);
-			
+
 			response.getWriter().write(jArray + "");
 	}
 }

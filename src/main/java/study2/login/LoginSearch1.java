@@ -15,15 +15,15 @@ import org.json.simple.JSONObject;
 
 @WebServlet("/study2/login/LoginSearch1")
 public class LoginSearch1 extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid") == null ? "" : request.getParameter("mid");
-		
+
 		LoginDAO dao = new LoginDAO();
 		LoginVO vo = dao.getLoginIdCheck(mid);
-		
-		Map<String, String> map = new HashMap<String, String>();
+
+		Map<String, String> map = new HashMap<>();
 		map.put("mid", vo.getMid());
 		map.put("nickName", vo.getNickName());
 		map.put("name", vo.getName());
@@ -31,16 +31,16 @@ public class LoginSearch1 extends HttpServlet {
 		map.put("gender", vo.getGender());
 		map.put("address", vo.getAddress());
 		System.out.println("map: " + map);
-		
+
 		// map 형식의 자료를 JSON 형식으로 변환
 		JSONObject jObj = new JSONObject(map);
 		System.out.println("jObj: " + jObj);
 		response.getWriter().write(jObj + "");
-		
+
 		// JSON 객체의 문자열로 변환
 //		String str = jObj.toJSONString();
 //		System.out.println("str: " + str);
-		
+
 		String viewPage = "/WEB-INF/study2/login/loginMain.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

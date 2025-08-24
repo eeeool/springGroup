@@ -17,15 +17,15 @@ import org.json.simple.JSONObject;
 @SuppressWarnings({ "unchecked", "serial" })
 @WebServlet("/study2/login/LoginList3")
 public class LoginList3 extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		LoginDAO dao = new LoginDAO();
 		List<LoginVO> vos = dao.getLoginList();
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		JSONArray jArray = new JSONArray();
-		
+
 		for (LoginVO vo : vos) {
 			map.put("mid", vo.getMid());
 			map.put("nickName", vo.getNickName());
@@ -33,11 +33,11 @@ public class LoginList3 extends HttpServlet {
 			map.put("age", vo.getAge()+"");
 			map.put("gender", vo.getGender());
 			map.put("address", vo.getAddress());
-			
+
 			JSONObject jObj = new JSONObject(map);
 			jArray.add(jObj);
 		}
-			
+
 		response.getWriter().write(jArray + "");
 	}
 }

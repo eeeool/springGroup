@@ -11,20 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/study2/login/LoginNickNameCheck")
 public class LoginNickNameCheck extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickName = request.getParameter("nickName") == null ? "" : request.getParameter("nickName");
-		
+
 		LoginDAO dao = new LoginDAO();
 		LoginVO vo = dao.getLoginNickNameCheck(nickName);
-		
+
 		int res = 0;
-		if (vo.getNickName() == null) res = 1;
-		
+		if (vo.getNickName() == null) {
+			res = 1;
+		}
+
 		request.setAttribute("res", res);
 		request.setAttribute("nickName", nickName);
-		
+
 		String viewPage = "/WEB-INF/study2/login/loginNickNameCheck.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

@@ -12,17 +12,17 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/study2/login/Logout")
 public class Logout extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("sMid");
 		session.invalidate();
-		
+
 //		String viewPage = "/WEB-INF/study2/login/login.jsp";
 //		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 //		dispatcher.forward(request, response);
-		
+
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println("alert('"+mid+"님 로그아웃 되셨습니다.');");

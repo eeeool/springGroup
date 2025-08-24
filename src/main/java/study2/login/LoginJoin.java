@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/study2/login/LoginJoin")
 public class LoginJoin extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String viewPage = "/WEB-INF/study2/login/loginJoin.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

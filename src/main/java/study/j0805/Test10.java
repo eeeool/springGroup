@@ -11,28 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/j0805/Test10")
 public class Test10 extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		int temp=0, tot=0;
 		int su1=0, su2=0;
-		
+
 		try {
 			su1 = Integer.parseInt(request.getParameter("su1"));
 			su2 = Integer.parseInt(request.getParameter("su2"));
-			
-			
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		if (su1 > su2) {
 			temp = su1;
 			su1 = su2;
 			su2 = temp;
 		}
-		
+
 		for (int i=0; i<=su2; i++) {
 			tot += i;
 		}

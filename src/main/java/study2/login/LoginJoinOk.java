@@ -3,18 +3,15 @@ package study2.login;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @WebServlet("/study2/login/LoginJoinOk")
 public class LoginJoinOk extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid")==null ? "" : request.getParameter("mid");
@@ -25,10 +22,10 @@ public class LoginJoinOk extends HttpServlet {
 		String gender = request.getParameter("gender")==null ? "" : request.getParameter("gender");
 		String address = request.getParameter("address")==null ? "" : request.getParameter("address");
 		LoginDAO dao = new LoginDAO();
-		
+
 		LoginVO voMid = dao.getLoginIdCheck(mid);
 		LoginVO voNickName = dao.getLoginIdCheck(nickName);
-		
+
 		PrintWriter out = response.getWriter();
 		if(voMid.getMid() != null || voNickName.getNickName() != null) {
 			out.println("<script>");
@@ -36,13 +33,13 @@ public class LoginJoinOk extends HttpServlet {
 			out.println("location.href='"+request.getContextPath()+"/study2/login/LoginJoin';");
 			out.println("</script>");
 		}
-		
+
 		// 비밀번호 암호화
 		// salt 값 구하기
 		int salt = (int) (Math.random() * 99999-10001+1)+10001;
 		int encPwd = Integer.parseInt(pwd) ^ salt;
 		pwd = String.valueOf(salt) + "" + String.valueOf(encPwd);
-		
+
 		LoginVO vo = new LoginVO();
 		vo.setMid(mid);
 		vo.setPwd(pwd);
@@ -51,9 +48,9 @@ public class LoginJoinOk extends HttpServlet {
 		vo.setAge(age);
 		vo.setGender(gender);
 		vo.setAddress(address);
-		
+
 		int res = dao.setLoginJoinOk(vo);
-		
+
 		if(res != 0) {
 			out.println("<script>");
 			out.println("alert('회원가입 되셨습니다.');");

@@ -21,25 +21,25 @@ public class LoginSearch2Ok extends HttpServlet{
 		int age = (request.getParameter("age") == null || request.getParameter("age").equals("")) ? 0 : Integer.parseInt(request.getParameter("age"));
 		String gender = request.getParameter("gender") == null ? "" : request.getParameter("gender");
 		String address = request.getParameter("address") == null ? "" : request.getParameter("address");
-		
+
 		LoginDAO dao = new LoginDAO();
 		LoginVO vo = new LoginVO();
 		if (gender.equals("")) {
 			vo = dao.getLoginIdCheck(mid);
 			gender = vo.getGender();
 		}
-		
+
 //		vo.setIdx(idx);
 		vo.setMid(mid);
 		vo.setName(name);
 		vo.setAge(age);
 		vo.setGender(gender);
 		vo.setAddress(address);
-		
+
 //		System.out.println("vo: " + vo);
-		
+
 		int res = dao.setLoginUpdate(vo);
-		
+
 		PrintWriter out = response.getWriter();
 		if(res != 0) {
 			out.println("<script>");

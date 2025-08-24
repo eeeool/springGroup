@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("*.test")
 public class Extension2Controller extends HttpServlet {
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String viewPage = "/WEB-INF/study2/mapping/";
-		
+
 		String uri = request.getRequestURI();
 		String com = uri.substring(uri.lastIndexOf("/")+1, uri.lastIndexOf("."));
-				
+
 		if (com.equals("home")) {
 			viewPage += "home";
 		}
@@ -34,9 +34,9 @@ public class Extension2Controller extends HttpServlet {
 			viewPage += "extension2";
 		}
 		viewPage += ".jsp";
-				
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
-		
+
 	}
 }

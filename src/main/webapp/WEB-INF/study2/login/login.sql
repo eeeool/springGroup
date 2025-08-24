@@ -19,3 +19,5 @@ drop table friend;
 insert into friend values (default, 'admin', '1234', '관리맨', '관리자', 33, '남자', '서울');
 
 select * from friend;
+
+delete from friend where mid='test';

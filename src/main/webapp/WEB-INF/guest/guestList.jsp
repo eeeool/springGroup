@@ -13,7 +13,7 @@
   <title>guestList.jsp</title>
   
   <script>
-  	'use strcit';
+  	'use strict';
   	
   	function guestDelete(idx) {
   		let ans = confirm('현재 게시글을 삭제하시겠습니까?');
@@ -32,7 +32,46 @@
   				else alert('게시글 삭제 실패');
   			}
   		});
+  	}
+  	
+  	function guestEdit(idx) {
+ 	    let email = $('#email_' + idx).text();
+	    let homePage = $('#homePage_' + idx).text();
+	    let content = $('#content_' + idx).html();
+	
+	    $('#email_' + idx).html('<input type="text" id="email_' + idx + '" class="form-control" value="' + email + '" />');
+	    $('#homePage_' + idx).html('<input type="text" id="homePage_' + idx + '" class="form-control" value="' + homePage + '" />');
+	    $('#content_' + idx).html('<textarea id="content_' + idx + '" class="form-control" rows="5">' + content + '</textarea>');
+	
+	    $('#editBtn_' + idx).hide();
+	    $('#saveBtn_' + idx).show();
+	    $('#cancelBtn_' + idx).show();
+  	}
+  	
+  	function guestUpdate(idx) {
+  		if (!confirm('게시글을 수정하시겠습니까?')) return;
   		
+ 	    let email = $('#email_' + idx + ' input').val().trim();
+ 	    let homePage = $('#homePage_' + idx + ' input').val().trim();
+  		let content = $('#content_' + idx + ' textarea').val().trim();
+  		  		
+  		$.ajax({
+  			url: 'GuestUpdate.gu',
+  			type: 'post',
+  			data: {
+  				idx: idx,
+  				email: email,
+  				homePage: homePage,
+  				content: content
+  			},
+  			success: function(res) {
+  				if (res != 0) {
+  					alert('게시글이 수정되었습니다.');
+  					location.reload();
+  				}
+  				else alert('게시글 수정 실패');
+  			}
+  		});
   	}
   </script>
   
@@ -58,6 +97,7 @@
   		</td>
   	</tr>
   </table>
+ 	<hr/>
   
   <c:forEach var="vo" items="${vos}" varStatus="st">
   	<table class="table table-borderless m-0 p-0">
@@ -65,9 +105,12 @@
 	  		<td>번호: ${vo.idx}
 	  			<c:if test="${sAdmin == 'adminOK'}"><a href='javascript:guestDelete(${vo.idx})' class='btn btn-danger btn-sm'>삭제</a></c:if></td>
 		  			<c:if test="${sAdmin != 'adminOK' && sNickName == vo.name}">
-		  				<a href="#" class="btn btn-wraning btn-sm">수정</a>
-		  				<a href="#" class="btn btn-danger btn-sm">삭제</a>
+		  				<a href="javascript:guestEdit(${vo.idx})" id="editBtn_${vo.idx}" class="btn btn-warning btn-sm me-1">수정</a>
+		  				<a href="javascript:guestUpdate(${vo.idx})" id="saveBtn_${vo.idx}" class="btn btn-warning btn-sm me-1" style='display: none'>완료</a>
+		  				<a href="javascript:guestDelete(${vo.idx})" class="btn btn-danger btn-sm me-1">삭제</a>
+		  				<a href="javascript:void(0);" id="cancelBtn_${vo.idx}" onclick="location.reload()" class="btn btn-info btn-sm" style='display: none'>취소</a>
 		  			</c:if>
+		  			
 	  		<td class="text-end">방문IP: ${vo.hostIp}</td>
 	  	</tr>
   	</table>
@@ -80,21 +123,21 @@
 	  	</tr>
 	  	<tr>
 	  		<th>이메일</th>
-	  		<td colspan="3">
+	  		<td colspan="3" id="email_${vo.idx}">
 	  		 	<c:if test="${empty vo.email || fn:length(vo.email)<6 || fn:indexOf(vo.email, '@') == -1 || fn:indexOf(vo.email, '.') == -1}">- 없음 -</c:if>
 	  		 	<c:if test="${!empty vo.email && fn:length(vo.email)>=6 && fn:indexOf(vo.email, '@') != -1 && fn:indexOf(vo.email, '.') != -1}">${vo.email}</c:if>
 	  		 </td>
 	  	</tr>
 	  	<tr>
 	  		<th>홈페이지</th>
-	  		<td colspan="3">
+	  		<td colspan="3" id="homePage_${vo.idx}">
 	  			<c:if test="${empty vo.homePage || fn:length(vo.homePage)<10 || fn:indexOf(vo.homePage, '.') == -1}">- 없음 -</c:if>
 	  			<c:if test="${!empty vo.homePage && fn:length(vo.homePage)>=10 && fn:indexOf(vo.homePage, '.') != -1}"><a href="${vo.homePage}">${vo.homePage}</a></c:if>
 	  		</td>
 	  	</tr>
 	  	<tr>
 	  		<th>방문소감</th>
-	  		<td colspan="3" style="height: 150px">${fn:replace(vo.content, newLine, "<br/>")}</td>
+	  		<td colspan="3" id="content_${vo.idx}" style="height: 150px">${fn:replace(vo.content, newLine, "<br/>")}</td>
 	  	</tr>
   	</table>
   	<br/>

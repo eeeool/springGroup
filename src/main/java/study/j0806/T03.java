@@ -15,10 +15,10 @@ public class T03 extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8"); // post방식의 전송은 서버에서 인코딩 처리해준다.
-		
+
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
-		
+
 		// DB처리 완료후 성공여부를 jsp로 보내준다.
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
