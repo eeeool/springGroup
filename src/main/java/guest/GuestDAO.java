@@ -105,7 +105,6 @@ public class GuestDAO {
 		return res;
 	}
 
-<<<<<<< HEAD
 	// 게시글 수정
 	public int setGuestUpdate(int idx, String content, String email, String homePage) {
 		int res = 0;
@@ -126,7 +125,8 @@ public class GuestDAO {
 		}
 		
 		return res;
-=======
+	}
+
 	// 총 레코드 건수 구하기
 	public int getTotRecCnt() {
 		int totRecCnt = 0;
@@ -146,6 +146,5 @@ public class GuestDAO {
 		}
 		
 		return totRecCnt;
->>>>>>> branch 'master' of https://github.com/eeeool/springGroup.git
 	}
 }
