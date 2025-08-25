@@ -54,7 +54,7 @@
 	  <c:if test="${pag < totPage}">[<a href="BoardList.bo?pag=${totPage}" class="text-decoration-none text-dark link-primary">마지막페이지</a>]</c:if>
 	</div>
 <!-- 블록페이지 끝 -->
-</div>
+</div> 
 <p><br/></p>
 <jsp:include page="/include/footer.jsp" />
 </body>
