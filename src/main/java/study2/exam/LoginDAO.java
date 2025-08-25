@@ -10,16 +10,16 @@ public class LoginDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-
+	
 	String sql = "";
-
+	
 	LoginVO vo = null;
-
+	
 	public LoginDAO() {
 		String url = "jdbc:mysql://localhost:3306/springgroup";
 		String user = "root";
 		String password = "1234";
-
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -29,7 +29,7 @@ public class LoginDAO {
 			System.out.println("DB연동 실패 " + e.getMessage());
 		}
 	}
-
+	
 	// conn 반납
 	public void connClose() {
 		if (conn != null) {
@@ -38,7 +38,7 @@ public class LoginDAO {
 			} catch (SQLException e) {}
 		}
 	}
-
+	
 	// pstmt 반납
 	public void pstmtClose() {
 		if (pstmt != null) {
@@ -47,7 +47,7 @@ public class LoginDAO {
 			} catch (Exception e) {}
 		}
 	}
-
+	
 	// rs 반납
 	public void rsClose() {
 		if (rs != null) {
@@ -61,14 +61,14 @@ public class LoginDAO {
 	// 아이디 검색
 	public LoginVO getLoginIdCheck(String mid) {
 		vo = new LoginVO();
-
+		
 		try {
 			sql = "select * from friend where mid=? and pwd=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 //			pstmt.setString(2, pwd);
 			rs = pstmt.executeQuery();
-
+			
 			if (rs.next()) {
 				vo.setIdx(rs.getInt("idx"));
 				vo.setMid(rs.getString("mid"));
@@ -84,7 +84,7 @@ public class LoginDAO {
 		} finally {
 			rsClose();
 		}
-
+		
 		return vo;
 	}
 }

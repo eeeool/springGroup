@@ -15,3 +15,11 @@ desc guest;
 insert into guest values(default, '관리자', '방명록 서비스를 시작합니다.', 'engo1@naver.com', 'www.naver.com', default, '192.168.59.59');
 
 select * from guest;
+select * from guest limit 5;
+
+/* 1Page 5건보기 */
+select * from guest limit 0,5; 
+-- 2Page 5건보기
+select * from guest limit 5,5; 
+
+select count(*) from guest;

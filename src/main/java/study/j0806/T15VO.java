@@ -12,9 +12,9 @@ public class T15VO {
 	private double avg;
 	private String hostIp;
 	private String grade;
-
+	
 	public T15VO() {}
-
+	
 	public T15VO(String name, String hakbun, int kor, int eng, int mat, int sci, int soc, int tot, double avg, String hostIp, String grade) {
 		this.name = name;
 		this.hakbun = hakbun;

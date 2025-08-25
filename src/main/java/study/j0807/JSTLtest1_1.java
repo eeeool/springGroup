@@ -17,23 +17,23 @@ public class JSTLtest1_1 extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-
+		
 		String name3 = request.getParameter("name") == null ? "" : request.getParameter("name");
 		int age = (request.getParameter("age") == null || request.getParameter("age").equals("")) ? 0 : Integer.parseInt(request.getParameter("age"));
 		String gender = request.getParameter("gender") == null ? "" : request.getParameter("gender");
 		String job = request.getParameter("job") == null ? "" : request.getParameter("job");
-
+		
 		// 작업(DB)처리 완료 후 view로 처리된 내용을 넘겨준다.
-
+		
 		T12VO vo = new T12VO();
 		vo.setName(name3);
 		vo.setAge(age);
 		vo.setGender(gender);
 		vo.setJob(job);
-
+		
 		request.setAttribute("vo", vo);
-
-
+		
+		
 		String viewPage = "/study/0807/jstl1.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

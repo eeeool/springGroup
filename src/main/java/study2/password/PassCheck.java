@@ -19,32 +19,32 @@ public class PassCheck extends HttpServlet{
 
 		System.out.println("===============================");
 		System.out.println("원본 pwd: " + pwd);
-
+		
 		if (flag == 1) {
 			int saltKey = 0x1234ABCD;
 			int encPwd, decPwd;
 			encPwd = Integer.parseInt(pwd) ^ saltKey;
 			System.out.println("암호화된 pwd: " + encPwd);
-
+			
 			decPwd = encPwd ^ saltKey;
-			System.out.println("복호화된 pwd: " + decPwd);
+			System.out.println("복호화된 pwd: " + decPwd);			
 		}
 		else if (flag == 2) {
 			int saltKey = (int) (Math.random() * 99999-10001+1)+10001;
 			int encPwd, decPwd;
 			encPwd = Integer.parseInt(pwd) ^ saltKey;
 			System.out.println("암호화된 pwd: " + encPwd);
-
+			
 			decPwd = encPwd ^ saltKey;
 			System.out.println("복호화된 pwd: " + decPwd);
-
+			
 			// 복호화된 키를 DB에 저장시켜준다
 			System.out.println("DB저장 pwd: " + saltKey+""+encPwd);
-
+			
 			decPwd = encPwd ^ saltKey;
 			System.out.println("복호화된 decPwd: " + decPwd);
 		}
-
+		
 		String viewPage = "/WEB-INF/study2/password/passForm.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/study2/exam/Login")
 public class Login extends HttpServlet {
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Cookie[] cookies = request.getCookies();
-
+		
 		if (cookies != null) {
-			for (Cookie element : cookies) {
-				if (element.getName().equals("cMid")) {
-					request.setAttribute("mid", element.getValue());
+			for (int i=0; i<cookies.length; i++) {
+				if (cookies[i].getName().equals("cMid")) {
+					request.setAttribute("mid", cookies[i].getValue());
 					break;
 				}
 			}
 		}
-
+		
 		String viewPage = "/WEB-INF/study2/exam/login.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

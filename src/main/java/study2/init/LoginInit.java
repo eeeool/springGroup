@@ -16,18 +16,18 @@ public class LoginInit extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("이곳은 /study2/init/login 서블릿 입니다.");
-
+		
 		// web.xml에서 넘어온 공통변수를 세션에 담아준다.
 		String officeName = getServletContext().getInitParameter("officeName");
 		String officeEmail = getServletContext().getInitParameter("officeEmail");
-
+		
 		HttpSession session = request.getSession();
-
+		
 		session.setAttribute("sOfficeName", officeName);
 		session.setAttribute("sOfficeEmail", officeEmail);
-
+		
 		String viewPage = "/WEB-INF/study2/init/login.jsp";
-
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}

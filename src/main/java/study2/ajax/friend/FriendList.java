@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/study2/ajax/friend/FriendList")
 public class FriendList extends HttpServlet {
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String str = "작업처리 결과";
-
+		
 		response.getWriter().write(str);
 	}
 }

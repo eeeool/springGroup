@@ -19,8 +19,9 @@ public class GuestUpdateCommand implements CommonInterface {
 		
 		GuestDAO dao = new GuestDAO();
 		
-		int res = dao.setGuestUpdate(idx, content, email, homePage);
+		//int res = dao.setGuestUpdate(idx, content, email, homePage);
 		
-		response.getWriter().write(res + "");
+		//response.getWriter().write(res + "");
+		response.getWriter().write("");
 	}
 }

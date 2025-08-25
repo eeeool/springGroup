@@ -16,16 +16,16 @@ public class DirectoryOk extends HttpServlet {
 		int su1 = (request.getParameter("su1") == null || request.getParameter("su1").equals("")) ? 0 : Integer.parseInt(request.getParameter("su1"));
 		int su2 = (request.getParameter("su2") == null || request.getParameter("su2").equals("")) ? 0 : Integer.parseInt(request.getParameter("su2"));
 		int hap = su1 + su2;
-
-
+		
+		
 		request.setAttribute("su1", su1);
 		request.setAttribute("su2", su2);
 		request.setAttribute("hap", hap);
 		request.setAttribute("message", "/study2/mapping/Directory");
-
+		
 		String viewPage = "/WEB-INF/study2/mapping/directory.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
-
+		
 	}
 }

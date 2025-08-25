@@ -16,7 +16,7 @@ public class FilterTest implements Filter {
 		// 한글처리
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-
+		
 		System.out.println("1. 필터 수행 전 입니다.");
 		chain.doFilter(request, response);
 		System.out.println("2. 필터 수행 후 입니다.");

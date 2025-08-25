@@ -9,7 +9,7 @@ public class LoginVO {
 	private int age;
 	private String gender;
 	private String address;
-
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -58,7 +58,7 @@ public class LoginVO {
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "LoginVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", nickName=" + nickName + ", name=" + name

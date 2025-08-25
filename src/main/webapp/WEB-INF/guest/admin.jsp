@@ -21,7 +21,7 @@
       </tr>
       <tr>
         <th class="align-middle">관리자 아이디</th>
-        <td><input type="text" name="mid" value="admin" autofocus required class="form-control"/></td>
+        <td><input type="text" name="mid" value="test" autofocus required class="form-control"/></td>
       </tr>
       <tr>
          <th class="align-middle">비밀번호</th>

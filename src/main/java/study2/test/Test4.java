@@ -19,5 +19,5 @@ public class Test4 extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
-
+	
 }

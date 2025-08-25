@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/j0806/T11")
 public class T11 extends HttpServlet {
@@ -15,7 +16,7 @@ public class T11 extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-
+		
 		// null 체크 처리하기
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
@@ -25,15 +26,15 @@ public class T11 extends HttpServlet {
 		String[] mountains = request.getParameterValues("mountain");
 		String content = request.getParameter("content");
 		String fileName = request.getParameter("fileName");
-
+		
 		// 정상적으로 넘어왔는지를 서버에서 체크(찍어본다.)
 		System.out.println("성명: " + name);
 		System.out.println("나이: " + age);
 		System.out.println("성별: " + gender);
 		// ~~~
-
+		
 		// 배열로 넘어오는 자료의 편집
-
+		
 		// 취미 편집
 		String hobby = "";
 		if (hobbys != null) {
@@ -44,7 +45,7 @@ public class T11 extends HttpServlet {
 		}
 		System.out.println("취미: " + hobby);
 		System.out.println("직업: " + job);
-
+		
 		// 가본 산 편집
 		String mountain = "";
 		if (mountain != null) {
@@ -56,10 +57,10 @@ public class T11 extends HttpServlet {
 		System.out.println("mountain: " + mountain);
 		System.out.println("자기소개: " + content);
 		System.out.println("파일명: " + fileName);
-
+		
 		// 서버에 정상적으로 처리된 자료(찍어본 자료)를 View(JSP)페이지로 전송시켜서 예쁘게 출력시켜준다.
 		content = content.replace("\n", "<br/>");
-
+		
 		request.setAttribute("name", name);
 		request.setAttribute("age", age);
 		request.setAttribute("gender", gender);
@@ -68,7 +69,7 @@ public class T11 extends HttpServlet {
 		request.setAttribute("mountain", mountain);
 		request.setAttribute("content", content);
 		request.setAttribute("fileName", fileName);
-
+		
 //		HttpSession session = request.getSession();
 //		session.setAttribute("name", name);
 //		session.setAttribute("age", age);
@@ -78,11 +79,11 @@ public class T11 extends HttpServlet {
 //		session.setAttribute("mountain", mountain);
 //		session.setAttribute("content", content);
 //		session.setAttribute("fileName", fileName);
-
+		
 		request.setAttribute("message", "");
 		request.setAttribute("url", request.getContextPath()+"/study/0806/t11Ok.jsk?name="+name+"&age="+age);
 //		request.setAttribute("url", request.getContextPath()+"/study/0806/t11Ok.jsk");
-
+		
 		String viewPage = "/study/0806/t11Ok.jsp";
 //		String viewPage = "/include/message.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

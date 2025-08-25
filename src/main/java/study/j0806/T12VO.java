@@ -10,7 +10,7 @@ public class T12VO {
 	private String content;
 	private String fileName;
 	private String address;
-
+	
 	public String getName() {
 		return name;
 	}
@@ -82,7 +82,7 @@ public class T12VO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "T12VO [name=" + name + ", age=" + age + ", gender=" + gender + ", hobby=" + hobby + ", job=" + job

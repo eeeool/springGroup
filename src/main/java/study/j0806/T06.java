@@ -15,25 +15,23 @@ public class T06 extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
-
+		
 		String mid = request.getParameter("mid") == null ? "" : request.getParameter("mid");
 		String pwd = request.getParameter("pwd") == null ? "" : request.getParameter("pwd");
-
+		
 		String loginOk = "NO";
-
-		if (mid.equals("admin") && pwd.equals("1234")) {
-			loginOk = "OK";
-		}
-
+		
+		if (mid.equals("admin") && pwd.equals("1234")) loginOk = "OK";
+		
 		PrintWriter out = response.getWriter();
-
+		
 		if (loginOk.equals("OK")) {
 			out.println("<script>");
 			out.println("alert('"+mid+"님 로그인 되었습니다.')");
 			out.println("location.href='"+request.getContextPath()+"/study/0806/t06_member.jsp?mid="+mid+"';");
 			out.println("</script>");
 		}
-		else {
+		else {			
 			out.println("<script>");
 			out.println("alert('로그인 실패')");
 			out.println("location.href='"+request.getContextPath()+"/study/0806/t06.jsp'");

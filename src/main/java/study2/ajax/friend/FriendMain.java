@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/study2/ajax/friend/FriendMain")
 public class FriendMain extends HttpServlet {
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		String viewPage = "/WEB-INF/study2/ajax/friend/friendMain.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

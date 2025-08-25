@@ -10,24 +10,24 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet({"/j0805/Test6_1", "/j0805/Test6_2", "/j0805/test6Ok"})
 public class Test06 extends HttpServlet {
-
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
-
+		
 		int flag = Integer.parseInt(request.getParameter("flag"));
-
+		
 		System.out.println("이곳은  "+flag+" Get메소드 입니다.");
 		response.getWriter().append("<input type='button' value='돌아가기("+flag+")' onclick='history.back()' />");
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=utf-8");
-
+		
 		int flag = Integer.parseInt(request.getParameter("flag"));
-
+		
 		System.out.println("이곳은  Post메소드("+flag+") 입니다.");
-		response.getWriter().append("<input type='button' value='돌아가기(Servlet("+flag+"))' onclick='history.back()' />");
+		response.getWriter().append("<input type='button' value='돌아가기(Servlet("+flag+"))' onclick='history.back()' />");		
 	}
 }
