@@ -13,15 +13,15 @@ public class LoginDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	
+
 	String sql = "";
 	LoginVO vo = null;
-	
+
 	public LoginDAO() {
 		String url = "jdbc:mysql://localhost:3306/springgroup";
 		String user = "root";
 		String password = "1234";
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -31,7 +31,7 @@ public class LoginDAO {
 			System.out.println("DB연동 실패~~" + e.getMessage());
 		}
 	}
-	
+
 	// conn반납
 	public void connClose() {
 		if(conn != null) {
@@ -40,7 +40,7 @@ public class LoginDAO {
 			} catch (SQLException e) {}
 		}
 	}
-	
+
 	// pstmt반납
 	public void pstmtClose() {
 		if(pstmt != null) {
@@ -49,7 +49,7 @@ public class LoginDAO {
 			} catch (SQLException e) {}
 		}
 	}
-	
+
 	// rs반납
 	public void rsClose() {
 		if(rs != null) {
@@ -68,7 +68,7 @@ public class LoginDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) {
 				vo.setIdx(rs.getInt("idx"));
 				vo.setMid(rs.getString("mid"));
@@ -95,7 +95,7 @@ public class LoginDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, nickName);
 			rs = pstmt.executeQuery();
-			
+
 			if(rs.next()) {
 				vo.setIdx(rs.getInt("idx"));
 				vo.setMid(rs.getString("mid"));
@@ -138,12 +138,12 @@ public class LoginDAO {
 
 	// 전체 회원 리스트
 	public List<LoginVO> getLoginList() {
-		List<LoginVO> vos = new ArrayList<LoginVO>();
+		List<LoginVO> vos = new ArrayList<>();
 		try {
 			sql = "select * from friend order by idx desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
+
 			while(rs.next()) {
 				vo = new LoginVO();
 				vo.setIdx(rs.getInt("idx"));
@@ -154,7 +154,7 @@ public class LoginDAO {
 				vo.setAge(rs.getInt("age"));
 				vo.setGender(rs.getString("gender"));
 				vo.setAddress(rs.getString("address"));
-				
+
 				vos.add(vo);
 			}
 		} catch (SQLException e) {
@@ -168,7 +168,7 @@ public class LoginDAO {
 	// 회원정보 수정
 	public int setLoginUpdate(LoginVO vo) {
 		int res = 0;
-		
+
 		try {
 			sql = "update friend set name=?, age=?, gender=?, address=? where mid=?";
 			pstmt = conn.prepareStatement(sql);
@@ -177,15 +177,15 @@ public class LoginDAO {
 			pstmt.setString(3, vo.getGender());
 			pstmt.setString(4, vo.getAddress());
 			pstmt.setString(5, vo.getMid());
-			
+
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("SQL오류(setLoginUpdate)~~" + e.getMessage());
 		} finally {
 			pstmtClose();
 		}
-		
+
 		return res;
 	}
-	
+
 }

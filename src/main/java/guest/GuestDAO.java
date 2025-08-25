@@ -102,4 +102,26 @@ public class GuestDAO {
 		}
 		return res;
 	}
+
+	// 게시글 수정
+	public int setGuestUpdate(int idx, String content, String email, String homePage) {
+		int res = 0;
+		
+		try {
+			sql = "update guest set content = ?, email = ?, homePage = ? where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, content);
+			pstmt.setString(2, email);
+			pstmt.setString(3, homePage);
+			pstmt.setInt(4, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("sql오류(setGuestUpdate) : " + e.getMessage());
+		}
+		finally {
+			pstmtClose();
+		}
+		
+		return res;
+	}
 }
