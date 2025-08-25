@@ -100,7 +100,7 @@ public class BoardDAO {
 		int totRecCnt = 0;
 		
 		try {
-			sql = "select count(*) as cnt from guest";
+			sql = "select count(*) as cnt from board";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
