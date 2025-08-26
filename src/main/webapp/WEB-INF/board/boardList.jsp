@@ -54,7 +54,7 @@
   	<c:forEach var="vo" items="${vos}" varStatus="st">
   		<tr>
   			<td>${curScrStartNo}</td>
-  			<td class="text-start">${vo.title}</td>
+  			<td class="text-start"><a href="BoardContent.bo?idx=${vo.idx}" class="text-decoration-none text-dark link-primary">${vo.title}</a></td>
   			<td>${vo.nickName}</td>
   			<td>${vo.wDate}</td>
   			<td>${vo.readNum}</td>
@@ -73,6 +73,17 @@
 	  <c:if test="${curBlock < lastBlock}">[<a href="BoardList.bo?pag=${(curBlock+1)*blockSize + 1}&pageSize=${pageSize}" class="text-decoration-none text-dark link-primary">다음블록</a>]</c:if>
 	  <c:if test="${pag < totPage}">[<a href="BoardList.bo?pag=${totPage}&pageSize=${pageSize}" class="text-decoration-none text-dark link-primary">마지막페이지</a>]</c:if>
 	</div>
+	<!-- <div class="text-center">
+	  <div class="container mt-3">
+		  <ul class="pagination justify-content-center">
+		    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+		    <li class="page-item"><a class="page-link" href="#">1</a></li>
+		    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+		    <li class="page-item"><a class="page-link" href="#">3</a></li>
+		    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+		  </ul>
+		</div>
+	</div> -->
 <!-- 블록페이지 끝 -->
 </div> 
 <p><br/></p>

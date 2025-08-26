@@ -49,6 +49,7 @@ public class BoardDAO {
 			
 			while (rs.next()) {
 				vo = new BoardVO();
+				
 				vo.setIdx(rs.getInt("idx"));
 				vo.setMid(rs.getString("mid"));
 				vo.setNickName(rs.getString("nickName"));
@@ -114,5 +115,96 @@ public class BoardDAO {
 		}
 		
 		return totRecCnt;
+	}
+
+	// 게시글 상세보기
+	public BoardVO getBoardContent(int idx) {
+		
+		try {
+			sql = "select * from board where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				vo = new BoardVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setNickName(rs.getString("nickName"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setHostIp(rs.getString("hostIp"));
+				vo.setOpenSw(rs.getString("openSw"));
+				vo.setReadNum(rs.getInt("readNum"));
+				vo.setwDate(rs.getString("wDate"));
+				vo.setGood(rs.getInt("good"));
+				vo.setComplaint(rs.getString("complaint"));
+			}
+		} catch (SQLException e) {
+			System.out.println("sql오류(getBoardContent) : " + e.getMessage());
+		}
+		finally {
+			rsClose();
+		}
+		return vo;
+	}
+
+	// 글 조회수 1씩 증가시키기
+	public void setBoardReadNumPlus(int idx) {
+		try {
+			sql = "update board set readNum = readNum + 1 where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("sql오류(setBoardReadNumPlus) : " + e.getMessage());
+		}
+		finally {
+			pstmtClose();
+		}
+	}
+
+	// 좋아요 횟수 증가시키기
+	public int setBoardGoodCheck(int idx) {
+		int res = 0;
+		
+		try {
+			sql = "update board set good = good + 1 where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("sql오류(setBoardGoodCheck) : " + e.getMessage());
+		}
+		finally {
+			pstmtClose();
+		}
+		
+		return res;
+	}
+
+	// 좋아요 횟수 증가/감소 처리
+	public int setBoardGoodCheckPlusMinus(int idx, int goodCnt) {
+		int res = 0;
+		
+		try {
+			sql = "update board set good = good + ? where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, goodCnt);
+			pstmt.setInt(2, idx);
+			
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("sql오류(setBoardGoodCheckPlusMinus) : " + e.getMessage());
+		}
+		finally {
+			pstmtClose();
+		}
+		
+		return res;
 	}
 }
