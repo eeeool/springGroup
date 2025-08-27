@@ -21,3 +21,38 @@ drop table board;
 insert into board values (default,'admin','관리맨','게시판 서비스를 시작합니다.','즐거운 게시판 생활 되세요','192.168.50.20',default,default,default,default,default);
 
 select * from board;
+
+select *,timestampdiff(hour, wDate, now()) from board order by idx desc limit 0,10;
+
+select datediff(now(), wDate) from board order by idx desc;
+select *, timestampdiff(hour, wDate, now()) as hour_diff, datediff(now(), wDate) as date_diff from board order by idx desc limit 0,10;
+
+select * from board order by idx desc;
+
+-- 이전글 / 다음글 처리(예: 현재글은 12번이라고 가정한다)
+select idx, title from board where idx < 12 order by idx desc limit 1; /* 이전글 */
+select idx, title from board where idx > 12 order by idx limit 1; /* 다음글 */
+
+select * from board where nickName like '%홍%';
+
+/* -----------------댓 글 처 리--------------------- */
+create table boardReply (
+	idx int not null auto_increment,
+	boardIdx int not null,							/* 부모글(원본글)의 고유번호 */
+	mid varchar(20) not null,						/* 댓글 올린이의 아이디 */
+	nickName varchar(20) not null,			/* 댓글 올린이의 닉네임 */
+	wDate datetime default now(), 			/* 댓글 올린 날짜 */
+	hostIp varchar(30) not null,				/* 댓글 올린 pc의 고유IP */
+	content text not null,							/* 댓글 내용 */
+	primary key(idx),
+	foreign key(boardIdx) references board(idx)
+	on update cascade
+	on delete restrict
+);
+desc boardReply;
+
+insert into boardReply values (default, 12, 'hkd1234', '홍장군', default, '192.168.50.59', '댓글연습');
+insert into boardReply values (default, 12, 'snm1234', '독야청청', default, '192.168.50.50', '수고하셨습니다');
+
+select * from boardReply order by idx desc;
+delete from board where idx=12;
