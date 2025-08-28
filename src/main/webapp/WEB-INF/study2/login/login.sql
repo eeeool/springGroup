@@ -9,6 +9,7 @@ create table friend (
 	age int default 20,
 	gender char(2) default '여자',
 	address varchar(30),
+	photo varchar(50),		/* 회원사진 */
 	unique key(mid),
 	unique key(nickName)
 );
@@ -19,3 +20,5 @@ drop table friend;
 insert into friend values (default, 'admin', '1234', '관리맨', '관리자', 33, '남자', '서울');
 
 select * from friend;
+
+delete from friend where idx=1;

@@ -14,6 +14,7 @@ public class BoardVO {
 	private String complaint;
 	private int hour_diff; // new.gif를 출력하기위한 변수(24시간 내)
 	private int date_diff; // 글쓴 날짜를 오늘 이후는 '날짜표시', 오늘 이전은 '시간/날짜-시간' 표시
+	private int replyCnt; // 댓글의 갯수를 저장하기위한 변수
 	
 	public int getIdx() {
 		return idx;
@@ -119,11 +120,19 @@ public class BoardVO {
 		this.date_diff = date_diff;
 	}
 
+	public int getReplyCnt() {
+		return replyCnt;
+	}
+
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVO [idx=" + idx + ", mid=" + mid + ", nickName=" + nickName + ", title=" + title + ", content="
 				+ content + ", hostIp=" + hostIp + ", openSw=" + openSw + ", readNum=" + readNum + ", wDate=" + wDate
 				+ ", good=" + good + ", complaint=" + complaint + ", hour_diff=" + hour_diff + ", date_diff="
-				+ date_diff + "]";
+				+ date_diff + ", replyCnt=" + replyCnt + "]";
 	}
 }
