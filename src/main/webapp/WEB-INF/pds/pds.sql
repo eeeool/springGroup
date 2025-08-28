@@ -15,7 +15,6 @@ create table pds (
 	pwd varchar(100),									/* 비밀번호(SHA256) */
 	hostIp varchar(30) not null,			/* 파일 업로드한 PC IP */
 	downNum int default 0,						/* 다운 받은 횟수 */
-	
 	primary key(idx),
 	foreign(mid) references friend(mid)
 );

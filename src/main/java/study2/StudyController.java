@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import common.CommonInterface;
+import study2.pdsTest.AllFileDeleteCommand;
 import study2.pdsTest.FileDeleteCommand;
 import study2.pdsTest.FileListCommand;
 import study2.pdsTest.FileUploadOk1Command;
@@ -61,6 +62,11 @@ public class StudyController extends HttpServlet {
 		}
 		else if(com.equals("FileDelete")) {
 			command = new FileDeleteCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("AllFileDelete")) {
+			command = new AllFileDeleteCommand();
 			command.execute(request, response);
 			return;
 		}

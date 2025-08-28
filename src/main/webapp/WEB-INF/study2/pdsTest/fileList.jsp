@@ -32,6 +32,48 @@
   			error: function() { alert('전송 오류'); }
   		})
   	}
+  	
+  	// 체크박스 전체 선택/해제
+  	$(() => {
+  		let check = false;
+  		
+  		$('#allCheck').on('click', (e) => {
+  			e.preventDefault();
+  			check = !check;
+  			$("[name='imgCheckBox']").prop('checked', check);
+  		});
+  	});
+  	
+  	// 체크된 이미지파일 삭제
+  	function allFileDelete() {
+  		const checkBox = document.getElementsByName('imgCheckBox')
+  		const files = Array.from(checkBox).filter((img) => img.checked).map((v) => v.value);
+  		
+  		if (files.length == 0) {
+  			alert('삭제할 파일을 선택하세요.');
+  			return false;
+  		}
+  		
+  		let ans = confirm("선택된 파일을 삭제하시겠습니까?");
+  		if (!ans) return false;	
+  		
+  		$.ajax({
+  			url: 'AllFileDelete.st',
+  			type: 'post',
+  			data: { file: files },
+  			success: function(res) {
+  				if (res != 0) {
+  					alert('파일 삭제 완료');
+  					location.reload();
+  				}
+  				else {
+  					alert('파일 삭제 실패');
+  				}
+  			},
+  			error: function() { alert('전송 오류'); }
+  		});
+  	};
+  	
   </script>
 </head>
 <body>
@@ -41,12 +83,17 @@
 <div class="container">
   <h2>서버 파일 리스트</h2>
   <p>(경로: /images/pdsTest)</p>
-  <div><a href="PdsTest.st" class="btn btn-success form-control">돌아가기</a></div>
+  <div class="row">
+  	<a href="PdsTest.st" class="btn btn-success form-control col me-5">돌아가기</a>
+  	<a href="#" class="btn btn-primary form-control col me-5" id="allCheck">전체 선택/해제</a>
+  	<a href="javascript:allFileDelete()" class="btn btn-primary form-control col me-5">전체 삭제</a>
+  </div>
   <hr/>
   <c:forEach var="file" items="${files}" varStatus="st">
 	  <c:set var="fNameArr" value="${fn:split(file, '.')}" />
 	  <c:set var="extName" value="${fn:toLowerCase(fNameArr[fn:length(fNameArr)-1])}" />
 	  <div class="mb-3">
+	  	<input type="checkbox" name="imgCheckBox" value="${file}" />
 	  	${st.count}: 
 		  <c:if test="${extName == 'zip'}">압축파일</c:if>
 		  <c:if test="${extName == 'hwp'}">한글파일</c:if>
