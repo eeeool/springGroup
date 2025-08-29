@@ -11,26 +11,10 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import common.CommonInterface;
 
-public class FileUploadOk1Command implements CommonInterface {
+public class FileUploadOk4Command implements CommonInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String fName = request.getParameter("fName") == null ? "" : request.getParameter("fName");
-//		System.out.println("fName: " + fName);
-		
-		/*
-		 COS 라이브러리: MultipartRequest() / DefaultFileRenamePolicy()
-		 MultipartRequest():
-		 	MultipartRequest(서버 저장소명, '서버에 저장될 파일의 경로', '서버에 저장될 파일의 최대용량', '코드변환 방식', 기타옵션(파일명 중복방지처리 등))
-		 	
-		 	서버 파일시스템의 저장경로: getRealPath() - 홈디렉토리(webapp) 기준으로 설정
-		 	ServletContext application = request.getServletContext();
-			application.getRealPath("");
-		*/
-		
-//		ServletContext application = request.getServletContext();
-//		application.getRealPath("");
-		
 		String realPath = request.getServletContext().getRealPath("/images/pdsTest");
 		int maxSize = 1024 * 1024 * 10; // 서버에 저장시킬 최대 파일 용량을 10Mbyte 제한
 		String encoding = "UTF-8";
@@ -47,7 +31,6 @@ public class FileUploadOk1Command implements CommonInterface {
 		System.out.println("원본 파일명:" + originalFileName);
 		System.out.println("서버저장 파일명: " + filesystemName);
 		System.out.println("서버파일 저장 경로명: " + realPath);
-		System.out.println("분류: " + part);
 		
 		// BackEnd 파일 체크
 		if (originalFileName != null && !originalFileName.equals("")) {

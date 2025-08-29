@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <ul class="navbar-nav">
@@ -15,7 +16,7 @@
 	        <a class="nav-link" href="BoardList.bo">Board</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="Pds.pds">PDS</a>
+	        <a class="nav-link" href="PdsList.pds">PDS</a>
 	      </li>
 	      <li class="nav-item">
 	        <div class="dropdown">
@@ -31,6 +32,8 @@
 					    <li><a class="dropdown-item" href="${ctp}/study2/mapping/Extension5.test5">확장자매핑연습5</a></li>
 					    <li><a class="dropdown-item" href="${ctp}/study2/uuid/Uuid.st">UUID 연습</a></li>
 					    <li><a class="dropdown-item" href="${ctp}/study2/pdsTest/PdsTest.st">파일 업로드 연습</a></li>
+					    <li><a class="dropdown-item" href="${ctp}/Sha.st">SHA암호화</a></li>
+					    <li><a class="dropdown-item" href="ModalTest.st">Modal 연습</a></li>
 					  </ul>
 					</div>
 	      </li>
